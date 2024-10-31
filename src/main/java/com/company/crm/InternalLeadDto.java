@@ -38,6 +38,12 @@ public class InternalLeadDto implements org.apache.thrift.TBase<InternalLeadDto,
   public @org.apache.thrift.annotation.Nullable java.lang.String company; // required
   public @org.apache.thrift.annotation.Nullable java.lang.String state; // required
 
+
+
+  public String getName() {
+      return firstName;
+  }
+
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
     FIRST_NAME((short)1, "firstName"),

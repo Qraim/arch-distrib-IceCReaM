@@ -1727,7 +1727,7 @@ public class InternalCRMService {
         java.util.BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
           {
-            org.apache.thrift.protocol.TList _list5 = iprot.readListBegin(org.apache.thrift.protocol.TType.STRUCT);
+            org.apache.thrift.protocol.TList _list5 = iprot.readListBegin();
             struct.success = new java.util.ArrayList<InternalLeadDto>(_list5.size);
             @org.apache.thrift.annotation.Nullable InternalLeadDto _elem6;
             for (int _i7 = 0; _i7 < _list5.size; ++_i7)
@@ -2630,7 +2630,7 @@ public class InternalCRMService {
         java.util.BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
           {
-            org.apache.thrift.protocol.TList _list13 = iprot.readListBegin(org.apache.thrift.protocol.TType.STRUCT);
+            org.apache.thrift.protocol.TList _list13 = iprot.readListBegin();
             struct.success = new java.util.ArrayList<InternalLeadDto>(_list13.size);
             @org.apache.thrift.annotation.Nullable InternalLeadDto _elem14;
             for (int _i15 = 0; _i15 < _list13.size; ++_i15)
