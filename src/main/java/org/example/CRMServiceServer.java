@@ -14,9 +14,8 @@ public class CRMServiceServer {
             InternalCRMService.Processor processor = new InternalCRMService.Processor(new InternalCRMServiceImpl());
             TServerTransport serverTransport = new TServerSocket(9090);
             TServer server = new TSimpleServer(new TServer.Args(serverTransport).processor(processor));
-
-            System.out.println("Starting the CRM Service Server...");
             server.serve();
+            System.out.println("CRM Service started on port 9090");
         } catch (Exception e) {
             e.printStackTrace();
         }
