@@ -15,7 +15,7 @@ struct InternalLeadDto {
 
 service InternalCRMService {
   list<InternalLeadDto> findLeads(1: double lowAnnualRevenue, 2: double highAnnualRevenue, 3: string state),
-  list<InternalLeadDto> findLeadsByDate(1: i64 startDate, 2: i64 endDate),
+  list<InternalLeadDto> findLeadsByDate(1: string startDate, 2: string endDate),
   void deleteLead(1: InternalLeadDto lead),
   void addLead(1: InternalLeadDto leadDto)
 }

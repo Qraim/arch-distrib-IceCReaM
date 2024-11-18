@@ -7,15 +7,23 @@ import org.apache.thrift.server.TSimpleServer;
 import org.apache.thrift.transport.TServerSocket;
 import org.apache.thrift.transport.TServerTransport;
 
-public class CRMServiceServer {
+public class CRMServer {
 
     public static void main(String[] args) {
         try {
-            InternalCRMService.Processor processor = new InternalCRMService.Processor(new InternalCRMServiceImpl());
+            InternalCRMServiceImpl service = new InternalCRMServiceImpl();
+
+            InternalCRMService.Processor<InternalCRMServiceImpl> processor =
+                    new InternalCRMService.Processor<>(service);
+
             TServerTransport serverTransport = new TServerSocket(9090);
-            TServer server = new TSimpleServer(new TServer.Args(serverTransport).processor(processor));
+
+            TServer server = new TSimpleServer(
+                    new TServer.Args(serverTransport).processor(processor));
+
+            System.out.println("Serveur CRM démarré sur le port 9090...");
+
             server.serve();
-            System.out.println("CRM Service started on port 9090");
         } catch (Exception e) {
             e.printStackTrace();
         }

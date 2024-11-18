@@ -1,5 +1,7 @@
 package com.company.crm;
 
+import org.apache.thrift.TException;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -53,6 +55,17 @@ public class InternalCRMServiceImpl implements InternalCRMService.Iface {
         return result;
     }
 
+    @Override
+    public List<InternalLeadDto> findLeadsByDate(String startDate, String endDate) throws TException {
+        List<InternalLeadDto> result = new ArrayList<>();
+        for (ModelTO lead : leads) {
+            if (lead.getCreationDate() >= Long.parseLong(startDate) && lead.getCreationDate() <= Long.parseLong(endDate)) {
+                result.add(Convert(lead));
+            }
+        }
+        return result;
+    }
+
     public List<InternalLeadDto> getLeadList() {
         List<InternalLeadDto> result = new ArrayList<>();
         for (ModelTO lead : leads) {
@@ -61,16 +74,6 @@ public class InternalCRMServiceImpl implements InternalCRMService.Iface {
         return result;
     }
 
-    @Override
-    public List<InternalLeadDto> findLeadsByDate(long startDate, long endDate) {
-        List<InternalLeadDto> result = new ArrayList<>();
-        for (ModelTO lead : leads) {
-            if (lead.getCreationDate() >= startDate && lead.getCreationDate() <= endDate) {
-                result.add(Convert(lead));
-            }
-        }
-        return result;
-    }
 
     @Override
     public void deleteLead(InternalLeadDto lead) {
