@@ -10,10 +10,9 @@ public class InternalCRMServiceImpl implements InternalCRMService.Iface {
 
     private List<ModelTO> leads = new ArrayList<>();
 
-
     public InternalLeadDto Convert(ModelTO model){
         InternalLeadDto dto = new InternalLeadDto();
-        dto.setName(model.getFirstName() + ", " + model.getLastName());
+        dto.setName( model.getLastName() + ", " + model.getFirstName());
         dto.setAnnualRevenue(model.getAnnualRevenue());
         dto.setPhone(model.getPhone());
         dto.setStreet(model.getStreet());
@@ -37,7 +36,7 @@ public class InternalCRMServiceImpl implements InternalCRMService.Iface {
         dto.setPostalCode(leadDto.getPostalCode());
         dto.setCity(leadDto.getCity());
         dto.setCountry(leadDto.getCountry());
-        dto.setCreationDate(Long.parseLong(String.valueOf(leadDto.getCreationDate())));
+        dto.setCreationDate(leadDto.getCreationDate());
         dto.setCompany(leadDto.getCompany());
         dto.setState(leadDto.getState());
         return dto;
@@ -57,9 +56,10 @@ public class InternalCRMServiceImpl implements InternalCRMService.Iface {
 
     @Override
     public List<InternalLeadDto> findLeadsByDate(String startDate, String endDate) throws TException {
+
         List<InternalLeadDto> result = new ArrayList<>();
         for (ModelTO lead : leads) {
-            if (lead.getCreationDate() >= Long.parseLong(startDate) && lead.getCreationDate() <= Long.parseLong(endDate)) {
+            if (lead.getCreationDate().compareTo(startDate) >= 0 && lead.getCreationDate().compareTo(endDate) <= 0) {
                 result.add(Convert(lead));
             }
         }

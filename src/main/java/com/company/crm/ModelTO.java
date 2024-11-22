@@ -9,12 +9,12 @@ public class ModelTO {
     private String postalCode;
     private String city;
     private String country;
-    private long creationDate;
+    private String creationDate;
     private String company;
     private String state;
 
     // Constructeur
-    public ModelTO(String firstName, String lastName, double annualRevenue, String phone, String street, String postalCode, String city, String country, long creationDate, String company, String state) {
+    public ModelTO(String firstName, String lastName, double annualRevenue, String phone, String street, String postalCode, String city, String country, String creationDate, String company, String state) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.annualRevenue = annualRevenue;
@@ -66,7 +66,7 @@ public class ModelTO {
         return country;
     }
 
-    public long getCreationDate() {
+    public String getCreationDate() {
         return creationDate;
     }
 
@@ -111,7 +111,7 @@ public class ModelTO {
         this.country = country;
     }
 
-    public void setCreationDate(long creationDate) {
+    public void setCreationDate(String creationDate) {
         this.creationDate = creationDate;
     }
 
