@@ -1,12 +1,11 @@
 package org.example;
 
-import com.company.crm.InternalCRMService;
-import com.company.crm.InternalLeadDto;
+import com.company.generated.InternalLeadDto;
 import org.apache.thrift.protocol.TBinaryProtocol;
 import org.apache.thrift.protocol.TProtocol;
 import org.apache.thrift.transport.TSocket;
 import org.apache.thrift.transport.TTransport;
-
+import com.company.generated.InternalCRMService;
 import java.util.List;
 
 public class CRMClient {
@@ -34,14 +33,12 @@ public class CRMClient {
             newLead.setCompany("Exemple S.A.");
             newLead.setState("IDF");
 
-            System.out.println("Ajout d'un nouveau lead...");
             client.addLead(newLead);
 
-            System.out.println("Recherche de leads avec un revenu entre 40000 et 60000...");
             List<InternalLeadDto> leads = client.findLeads(40000, 60000, "IDF");
 
             for (InternalLeadDto lead : leads) {
-                System.out.println("Lead trouvé : " + lead.getName() + ", Revenu annuel : " + lead.getAnnualRevenue());
+                System.out.println("Lead : " + lead.getName() + ", Revenu : " + lead.getAnnualRevenue());
             }
 
         } catch (Exception e) {

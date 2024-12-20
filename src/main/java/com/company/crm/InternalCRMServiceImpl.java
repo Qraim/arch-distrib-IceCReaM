@@ -1,16 +1,17 @@
 package com.company.crm;
 
+import com.company.generated.InternalLeadDto;
 import org.apache.thrift.TException;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class InternalCRMServiceImpl implements InternalCRMService.Iface {
+public class InternalCRMServiceImpl implements com.company.generated.InternalCRMService.Iface {
 
     private List<ModelTO> leads = new ArrayList<>();
 
-    public InternalLeadDto Convert(ModelTO model){
+    public com.company.generated.InternalLeadDto Convert(ModelTO model){
         InternalLeadDto dto = new InternalLeadDto();
         dto.setName( model.getLastName() + ", " + model.getFirstName());
         dto.setAnnualRevenue(model.getAnnualRevenue());

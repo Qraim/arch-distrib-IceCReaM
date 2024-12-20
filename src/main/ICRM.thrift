@@ -1,4 +1,4 @@
-namespace java com.company.crm
+namespace java com.company.generated
 
 struct InternalLeadDto {
    1: string Name,
