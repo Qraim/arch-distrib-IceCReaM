@@ -1,5 +1,6 @@
 plugins {
     id("java")
+    id("application")
 }
 
 group = "org.example"
@@ -36,4 +37,8 @@ tasks.register<Exec>("generateThrift") {
 
 tasks.compileJava {
     dependsOn("generateThrift")
+}
+
+application {
+    mainClass.set("org.example.CRMServer")
 }
